@@ -4,7 +4,7 @@ import { branding } from "@/lib/branding";
 
 export const metadata = {
   title: "Careers",
-  description: "Careers at Digitalyra.",
+  description: "Careers at Elvarin.",
 };
 
 export default function CareersPage() {
@@ -13,9 +13,9 @@ export default function CareersPage() {
       <div className="mx-auto max-w-3xl px-4 py-16">
         <h1 className="text-3xl font-bold text-gray-900">Careers</h1>
         <p className="mt-4 leading-relaxed text-gray-600">
-          {branding.company} is growing its enterprise licensing and IT operations team. For
+          {branding.company} is growing its enterprise IT services and delivery teams. For
           opportunities, reach out via our{" "}
-          <Link href="/support#contact" className="text-primary hover:underline">
+          <Link href="/contact" className="text-primary hover:underline">
             contact page
           </Link>
           .

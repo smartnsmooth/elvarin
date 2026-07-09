@@ -1,33 +1,43 @@
 @import "tailwindcss";
 
 :root {
+  --primary-dark: #0f172a;
+  --accent: #38bdf8;
   --background: #ffffff;
   --foreground: #111827;
   --primary: #1e3a8a;
-  --primary-dark: #1e3a8a;
+  --primary-hover: #172554;
   --secondary: #2563eb;
   --accent-blue: #3b82f6;
   --gray-50: #f9fafb;
   --gray-100: #f3f4f6;
+  --gray-200: #e5e7eb;
   --gray-300: #d1d5db;
   --gray-500: #6b7280;
   --gray-700: #374151;
   --gray-900: #111827;
+  --error: #ef4444;
+  --success: #10b981;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-primary: var(--primary);
-  --color-primary-dark: #172554;
+  --color-primary-hover: var(--primary-hover);
   --color-secondary: var(--secondary);
   --color-accent-blue: var(--accent-blue);
   --color-gray-50: var(--gray-50);
   --color-gray-100: var(--gray-100);
+  --color-gray-200: var(--gray-200);
   --color-gray-300: var(--gray-300);
   --color-gray-500: var(--gray-500);
   --color-gray-700: var(--gray-700);
   --color-gray-900: var(--gray-900);
+  --color-error: var(--error);
+  --color-success: var(--success);
+  --color-primary-dark: var(--primary-dark);
+  --color-accent: var(--accent);
   --font-sans: var(--font-inter);
 }
 
@@ -36,13 +46,14 @@ body {
   color: var(--foreground);
   font-family: var(--font-inter), system-ui, -apple-system, sans-serif;
   font-size: 16px;
-  line-height: 1.5;
+  line-height: 26px;
 }
 
 h1 {
   font-size: 48px;
   line-height: 56px;
   font-weight: 600;
+  letter-spacing: -0.5px;
 }
 
 h2 {
@@ -54,6 +65,12 @@ h2 {
 h3 {
   font-size: 28px;
   line-height: 36px;
+  font-weight: 600;
+}
+
+h4 {
+  font-size: 22px;
+  line-height: 30px;
   font-weight: 600;
 }
 
@@ -74,12 +91,56 @@ h3 {
   }
 }
 
-.hero-subtle-bg {
-  background: linear-gradient(135deg, #f9fafb 0%, #eff6ff 50%, #f9fafb 100%);
+.container-enterprise {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1320px;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
-.footer-dark {
-  background-color: #111827;
+@media (min-width: 768px) {
+  .container-enterprise {
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .container-enterprise {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+}
+
+.section-padding {
+  padding-top: 64px;
+  padding-bottom: 64px;
+}
+
+@media (min-width: 768px) {
+  .section-padding {
+    padding-top: 96px;
+    padding-bottom: 96px;
+  }
+}
+
+.section-padding-hero {
+  padding-top: 96px;
+  padding-bottom: 96px;
+}
+
+@media (min-width: 768px) {
+  .section-padding-hero {
+    padding-top: 128px;
+    padding-bottom: 128px;
+  }
+}
+
+.nav-link-active {
+  color: var(--primary);
+  text-decoration: underline;
+  text-underline-offset: 4px;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -90,4 +151,28 @@ h3 {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
+}
+
+
+.section-spacing {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+
+@media (min-width: 768px) {
+  .section-spacing {
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+  }
+}
+
+.pattern-grid {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+.hero-gradient {
+  background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 55%, #1d4ed8 100%);
 }

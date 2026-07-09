@@ -3,36 +3,44 @@
 import { useState } from "react";
 import { cn } from "@/lib/cn";
 
-type InquiryType = "business" | "proposal" | "maintenance" | "general";
+type InquiryType =
+  | "si"
+  | "sm"
+  | "solutions"
+  | "saas"
+  | "consulting"
+  | "general";
 
 const inquiryTypes: { value: InquiryType; label: string }[] = [
-  { value: "business", label: "Business Inquiry" },
-  { value: "proposal", label: "Project Proposal" },
-  { value: "maintenance", label: "Maintenance Request" },
-  { value: "general", label: "General Question" },
+  { value: "si", label: "System Integration (SI)" },
+  { value: "sm", label: "System Maintenance (SM)" },
+  { value: "solutions", label: "Software Solutions" },
+  { value: "saas", label: "SaaS Inquiry" },
+  { value: "consulting", label: "IT Consulting" },
+  { value: "general", label: "General Inquiry" },
 ];
 
 type FormState = {
   name: string;
   company: string;
   email: string;
-  phone: string;
   inquiryType: InquiryType;
   message: string;
+  website: string;
 };
 
 type FieldErrors = Partial<Record<keyof FormState, string>>;
 
 function validate(form: FormState): FieldErrors {
   const errors: FieldErrors = {};
-  if (!form.name.trim()) errors.name = "Name is required";
-  if (!form.company.trim()) errors.company = "Company name is required";
+  if (!form.name.trim()) errors.name = "This field is required";
+  if (!form.company.trim()) errors.company = "This field is required";
   if (!form.email.trim()) {
-    errors.email = "Email is required";
+    errors.email = "This field is required";
   } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) {
-    errors.email = "Enter a valid email address";
+    errors.email = "Email format is invalid";
   }
-  if (!form.message.trim()) errors.message = "Message is required";
+  if (!form.message.trim()) errors.message = "This field is required";
   return errors;
 }
 
@@ -41,14 +49,15 @@ export default function ContactForm() {
     name: "",
     company: "",
     email: "",
-    phone: "",
-    inquiryType: "business",
+    inquiryType: "general",
     message: "",
+    website: "",
   });
   const [errors, setErrors] = useState<FieldErrors>({});
   const [touched, setTouched] = useState<Partial<Record<keyof FormState, boolean>>>({});
   const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [submitError, setSubmitError] = useState("");
 
   function validateField(field: keyof FormState, value: string) {
     const next = { ...form, [field]: value };
@@ -68,6 +77,7 @@ export default function ContactForm() {
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
+    setSubmitError("");
     const allTouched = Object.keys(form).reduce(
       (acc, key) => ({ ...acc, [key]: true }),
       {} as Record<keyof FormState, boolean>,
@@ -87,10 +97,14 @@ export default function ContactForm() {
       });
       if (res.ok) {
         setSubmitted(true);
-        setForm({ name: "", company: "", email: "", phone: "", inquiryType: "business", message: "" });
+        setForm({ name: "", company: "", email: "", inquiryType: "general", message: "", website: "" });
         setTouched({});
         setErrors({});
+      } else {
+        setSubmitError("Submission failed. Please try again.");
       }
+    } catch {
+      setSubmitError("Submission failed. Please try again.");
     } finally {
       setLoading(false);
     }
@@ -98,74 +112,63 @@ export default function ContactForm() {
 
   if (submitted) {
     return (
-      <div className="rounded-xl border border-gray-200 bg-white p-8">
-        <h2 className="text-xl font-semibold text-gray-900">Thank you for your inquiry</h2>
-        <p className="mt-3 text-base text-gray-600">
-          Your message has been received. Our team will respond within one to two business days.
-        </p>
-        <button
-          type="button"
-          onClick={() => setSubmitted(false)}
-          className="mt-6 text-sm font-medium text-primary hover:text-primary-dark"
-        >
-          Submit another inquiry
-        </button>
+      <div className="rounded-lg border border-gray-200 bg-white p-6">
+        <p className="text-base text-gray-900">Your inquiry has been received.</p>
       </div>
     );
   }
 
   return (
-    <form onSubmit={handleSubmit} className="rounded-xl border border-gray-200 bg-white p-8" noValidate>
-      <h2 className="text-xl font-semibold text-gray-900">Send an Inquiry</h2>
-      <p className="mt-2 text-sm text-gray-600">
-        Fields marked with <span className="text-primary">*</span> are required.
-      </p>
+    <form onSubmit={handleSubmit} className="rounded-lg border border-gray-200 bg-white p-6" noValidate>
+      <div className="absolute -left-[9999px]" aria-hidden="true">
+        <label htmlFor="website">Website</label>
+        <input
+          id="website"
+          type="text"
+          name="website"
+          tabIndex={-1}
+          autoComplete="off"
+          value={form.website}
+          onChange={(e) => handleChange("website", e.target.value)}
+        />
+      </div>
 
-      <div className="mt-8 space-y-6">
-        <div className="grid gap-6 sm:grid-cols-2">
-          <FormField
-            label="Name"
-            required
-            value={form.name}
-            error={touched.name ? errors.name : undefined}
-            onChange={(v) => handleChange("name", v)}
-            onBlur={() => handleBlur("name")}
-          />
-          <FormField
-            label="Company Name"
-            required
-            value={form.company}
-            error={touched.company ? errors.company : undefined}
-            onChange={(v) => handleChange("company", v)}
-            onBlur={() => handleBlur("company")}
-          />
-          <FormField
-            label="Email"
-            type="email"
-            required
-            value={form.email}
-            error={touched.email ? errors.email : undefined}
-            onChange={(v) => handleChange("email", v)}
-            onBlur={() => handleBlur("email")}
-          />
-          <FormField
-            label="Contact Number"
-            type="tel"
-            value={form.phone}
-            onChange={(v) => handleChange("phone", v)}
-            onBlur={() => handleBlur("phone")}
-          />
-        </div>
+      <div className="space-y-6">
+        <FormField
+          label="Full Name"
+          required
+          value={form.name}
+          error={touched.name ? errors.name : undefined}
+          onChange={(v) => handleChange("name", v)}
+          onBlur={() => handleBlur("name")}
+        />
+        <FormField
+          label="Company Name"
+          required
+          value={form.company}
+          error={touched.company ? errors.company : undefined}
+          onChange={(v) => handleChange("company", v)}
+          onBlur={() => handleBlur("company")}
+        />
+        <FormField
+          label="Email Address"
+          type="email"
+          required
+          value={form.email}
+          error={touched.email ? errors.email : undefined}
+          onChange={(v) => handleChange("email", v)}
+          onBlur={() => handleBlur("email")}
+        />
 
         <div>
           <label htmlFor="inquiryType" className="mb-2 block text-sm font-medium text-gray-700">
-            Inquiry Type <span className="text-primary">*</span>
+            Inquiry Type <span className="text-gray-500">*</span>
           </label>
           <select
             id="inquiryType"
             value={form.inquiryType}
             onChange={(e) => handleChange("inquiryType", e.target.value)}
-            className="w-full rounded-md border border-gray-300 px-4 py-3 text-sm focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
+            className="h-11 w-full rounded-lg border border-gray-300 px-4 text-sm focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
           >
             {inquiryTypes.map((type) => (
               <option key={type.value} value={type.value}>
@@ -177,30 +180,32 @@ export default function ContactForm() {
 
         <div>
           <label htmlFor="message" className="mb-2 block text-sm font-medium text-gray-700">
-            Message <span className="text-primary">*</span>
+            Message <span className="text-gray-500">*</span>
           </label>
           <textarea
             id="message"
-            rows={5}
+            rows={6}
             value={form.message}
             onChange={(e) => handleChange("message", e.target.value)}
             onBlur={() => handleBlur("message")}
             className={cn(
-              "w-full rounded-md border px-4 py-3 text-sm focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary",
-              touched.message && errors.message ? "border-red-400" : "border-gray-300",
+              "min-h-[120px] w-full rounded-lg border px-4 py-3 text-sm focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary",
+              touched.message && errors.message ? "border-error" : "border-gray-300",
             )}
           />
           {touched.message && errors.message && (
-            <p className="mt-1 text-sm text-red-600">{errors.message}</p>
+            <p className="mt-2 text-sm text-error">{errors.message}</p>
           )}
         </div>
+
+        {submitError && <p className="text-sm text-error">{submitError}</p>}
 
         <button
           type="submit"
           disabled={loading}
-          className="rounded-xl bg-primary px-5 py-3 text-sm font-medium text-white transition-colors hover:bg-primary-dark disabled:opacity-60"
+          className="h-11 w-full rounded-lg bg-primary text-sm font-medium text-white transition-colors duration-200 hover:bg-primary-hover disabled:opacity-50"
         >
-          {loading ? "Sending..." : "Submit Inquiry"}
+          {loading ? "Loading..." : "Send Inquiry"}
         </button>
       </div>
     </form>
@@ -228,7 +233,7 @@ function FormField({
   return (
     <div>
       <label htmlFor={id} className="mb-2 block text-sm font-medium text-gray-700">
-        {label} {required && <span className="text-primary">*</span>}
+        {label} {required && <span className="text-gray-500">*</span>}
       </label>
       <input
         id={id}
@@ -237,11 +242,11 @@ function FormField({
         onChange={(e) => onChange(e.target.value)}
         onBlur={onBlur}
         className={cn(
-          "w-full rounded-md border px-4 py-3 text-sm focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary",
-          error ? "border-red-400" : "border-gray-300",
+          "h-11 w-full rounded-lg border px-4 text-sm focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary",
+          error ? "border-error" : "border-gray-300",
         )}
       />
-      {error && <p className="mt-1 text-sm text-red-600">{error}</p>}
+      {error && <p className="mt-2 text-sm text-error">{error}</p>}
     </div>
   );
 }

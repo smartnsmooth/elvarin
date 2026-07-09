@@ -5,6 +5,7 @@ type SectionContainerProps = {
   className?: string;
   id?: string;
   background?: "white" | "gray";
+  size?: "standard" | "compact" | "hero";
 };
 
 export default function SectionContainer({
@@ -12,17 +13,18 @@ export default function SectionContainer({
   className,
   id,
   background = "white",
+  size = "standard",
 }: SectionContainerProps) {
   return (
     <section
       id={id}
       className={cn(
-        "py-16 md:py-24",
+        size === "hero" ? "section-padding-hero" : size === "compact" ? "py-16" : "section-padding",
         background === "gray" && "bg-gray-50",
         className,
       )}
     >
-      <div className="mx-auto max-w-[1280px] px-4 sm:px-6">{children}</div>
+      <div className="container-enterprise">{children}</div>
     </section>
   );
 }
@@ -30,15 +32,14 @@ export default function SectionContainer({
 type SectionHeaderProps = {
   title: string;
   subtitle?: string;
-  centered?: boolean;
   className?: string;
 };
 
-export function SectionHeader({ title, subtitle, centered = false, className }: SectionHeaderProps) {
+export function SectionHeader({ title, subtitle, className }: SectionHeaderProps) {
   return (
-    <div className={cn(centered && "mx-auto max-w-3xl text-center", "mb-12", className)}>
-      <h2 className="text-3xl font-semibold leading-tight text-gray-900 md:text-4xl">{title}</h2>
-      {subtitle && <p className="mt-4 text-base leading-relaxed text-gray-600">{subtitle}</p>}
+    <div className={cn("mb-12 max-w-[720px]", className)}>
+      <h2 className="text-gray-900">{title}</h2>
+      {subtitle && <p className="mt-4 text-base leading-[26px] text-gray-700">{subtitle}</p>}
     </div>
   );
 }

@@ -1,12 +1,13 @@
 {
-  "name": "elvarin",
+  "name": "elvarin-portfolio",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev --port 3000",
     "build": "next build",
     "start": "next start --port 3000",
-    "lint": "eslint"
+    "lint": "eslint",
+    "images:download": "node scripts/download-portfolio-images.mjs"
   },
   "dependencies": {
     "lucide-react": "^1.21.0",
