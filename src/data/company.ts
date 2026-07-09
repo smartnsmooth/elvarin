@@ -65,6 +65,18 @@ export const companyQuote = {
   attribution: "Elvarin Delivery Leadership",
 } as const;
 
+export const companyRegistration = {
+  title: "Company Registration",
+  description:
+    "Elvarin Ltd is a company registered in England and Wales. Registration details are shown on this website once confirmed for publication.",
+} as const;
+
+export const founderBio = {
+  name: "Leadership Team",
+  role: "Founding & Delivery Leadership",
+  bio: "Elvarin is led by practitioners with experience in enterprise system integration, software delivery, and IT consulting for regulated and operationally complex environments. Our leadership team works directly with clients on scope definition, architecture, and delivery governance.",
+} as const;
+
 export const deliveryProcess = [
   { step: 1, title: "Requirement Analysis", description: "Document business context, scope, and operational requirements." },
   { step: 2, title: "System Design", description: "Define architecture, integration points, and delivery plan." },

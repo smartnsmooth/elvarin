@@ -1,6 +1,7 @@
 import Link from "next/link";
 import MarketingImage from "@/components/marketing/MarketingImage";
-import { companyIntro, companyMilestones, companyQuote, organizationalTeams } from "@/data/company";
+import { companyIntro, companyMilestones, companyQuote, companyRegistration, founderBio, organizationalTeams } from "@/data/company";
+import { branding, hasRegisteredAddress } from "@/lib/branding";
 import { visuals } from "@/lib/visuals";
 
 export default function AboutPageContent() {
@@ -68,6 +69,53 @@ export default function AboutPageContent() {
               </article>
             ))}
           </div>
+        </div>
+      </section>
+
+      <section className="section-spacing bg-gray-50">
+        <div className="mx-auto max-w-3xl px-4">
+          <h2 className="text-2xl font-bold text-gray-900">Leadership</h2>
+          <article className="mt-8 rounded-xl border border-gray-200 bg-white p-6">
+            <p className="text-sm font-semibold uppercase tracking-widest text-accent">{founderBio.role}</p>
+            <h3 className="mt-2 text-lg font-semibold text-gray-900">{founderBio.name}</h3>
+            <p className="mt-4 text-gray-700">{founderBio.bio}</p>
+          </article>
+        </div>
+      </section>
+
+      <section className="section-spacing">
+        <div className="mx-auto max-w-3xl px-4">
+          <h2 className="text-2xl font-bold text-gray-900">{companyRegistration.title}</h2>
+          <p className="mt-4 text-gray-700">{companyRegistration.description}</p>
+          <dl className="mt-6 space-y-3 text-sm text-gray-700">
+            <div>
+              <dt className="font-medium text-gray-900">Legal entity</dt>
+              <dd>{branding.company}</dd>
+            </div>
+            {branding.companiesHouseNumber && (
+              <div>
+                <dt className="font-medium text-gray-900">Companies House number</dt>
+                <dd>{branding.companiesHouseNumber}</dd>
+              </div>
+            )}
+            {hasRegisteredAddress() && (
+              <div>
+                <dt className="font-medium text-gray-900">Registered office</dt>
+                <dd>{branding.registeredAddress}</dd>
+              </div>
+            )}
+            {branding.vatNumber && (
+              <div>
+                <dt className="font-medium text-gray-900">VAT number</dt>
+                <dd>{branding.vatNumber}</dd>
+              </div>
+            )}
+          </dl>
+        </div>
+      </section>
+
+      <section className="section-spacing bg-gray-50">
+        <div className="mx-auto max-w-7xl px-4 text-center">
           <div className="mt-10">
             <Link href="/contact" className="inline-block rounded-lg bg-primary px-6 py-3 text-sm font-semibold text-white hover:bg-primary-hover">Contact Us</Link>
           </div>

@@ -1,10 +1,13 @@
 import SiteShell from "@/components/SiteShell";
 import ServicesPageContent from "@/components/pages/ServicesPageContent";
+import { createPageMetadata } from "@/lib/metadata";
 
-export const metadata = {
+export const metadata = createPageMetadata({
   title: "Services",
-  description: "System integration, system management, software solutions, SaaS products, and IT consulting for enterprise business clients.",
-};
+  description:
+    "Enterprise IT services from Elvarin: system integration, system management, custom software, SaaS products, and IT consulting for business clients.",
+  path: "/services",
+});
 
 export default function ServicesPage() {
   return (

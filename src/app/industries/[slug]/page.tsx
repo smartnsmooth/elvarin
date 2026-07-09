@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import SiteShell from "@/components/SiteShell";
 import IndustryDetailLayout from "@/components/pages/industries/IndustryDetailLayout";
 import { getIndustryBySlug, industries } from "@/data/industries";
+import { createPageMetadata } from "@/lib/metadata";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -14,7 +15,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const industry = getIndustryBySlug(slug);
   if (!industry) return { title: "Industry Not Found" };
-  return { title: industry.name, description: industry.description };
+  return createPageMetadata({
+    title: industry.name,
+    description: industry.description,
+    path: `/industries/${slug}`,
+  });
 }
 
 export default async function IndustryDetailPage({ params }: Props) {

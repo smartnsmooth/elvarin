@@ -4,7 +4,7 @@ import MarketingImage from "@/components/marketing/MarketingImage";
 import { SectionHeader } from "@/components/marketing/SplitSection";
 import { branding } from "@/lib/branding";
 import { capabilities } from "@/data/company";
-import { getFeaturedProjects } from "@/data/projects";
+import { getFeaturedProjects, projectsDisclaimer } from "@/data/projects";
 import { capabilityImage, projectImage, visuals } from "@/lib/visuals";
 
 const capabilitySlugs = [
@@ -63,7 +63,11 @@ export default function HomePage() {
 
       <section className="section-spacing">
         <div className="mx-auto max-w-7xl px-4">
-          <SectionHeader title="Featured Projects" subtitle="Recent enterprise engagements across industries and service categories." />
+          <SectionHeader
+            title="Representative Projects"
+            subtitle="Illustrative examples of typical enterprise engagement scope across industries and service categories."
+          />
+          <p className="mx-auto mb-8 max-w-3xl text-center text-sm text-gray-600">{projectsDisclaimer}</p>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {featured.map((project) => (
               <Link
@@ -91,6 +95,7 @@ export default function HomePage() {
         <div className="mx-auto max-w-3xl px-4 text-center text-white">
           <h2 className="text-2xl font-bold md:text-3xl">Discuss Your Requirements</h2>
           <p className="mt-4 text-blue-100">Contact us to initiate a business inquiry or project proposal discussion.</p>
+          <p className="mt-3 text-sm text-blue-200">{branding.responseTime}</p>
           <Link href="/contact" className="mt-8 inline-block rounded-lg bg-white px-8 py-3 text-sm font-semibold text-primary shadow-lg hover:bg-gray-100">
             Contact Us
           </Link>

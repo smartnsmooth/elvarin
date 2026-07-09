@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 import Link from "next/link";
-import { branding } from "@/lib/branding";
+import { branding, hasPhone, hasRegisteredAddress } from "@/lib/branding";
 import { footerServices, legalLinks, mainNav } from "@/lib/navigation";
 import Button from "@/components/ui/Button";
 
@@ -9,6 +9,32 @@ function FooterColumn({ title, children }: { title: string; children: ReactNode 
     <div>
       <h4 className="mb-4 text-gray-900">{title}</h4>
       {children}
+    </div>
+  );
+}
+
+function LegalDetails() {
+  const items: string[] = [];
+
+  if (branding.companiesHouseNumber) {
+    items.push(`Company No. ${branding.companiesHouseNumber}`);
+  }
+  if (branding.vatNumber) {
+    items.push(`VAT ${branding.vatNumber}`);
+  }
+  if (hasRegisteredAddress()) {
+    items.push(branding.registeredAddress);
+  }
+
+  if (items.length === 0) {
+    return null;
+  }
+
+  return (
+    <div className="mt-4 space-y-1 text-xs text-gray-500">
+      {items.map((item) => (
+        <p key={item}>{item}</p>
+      ))}
     </div>
   );
 }
@@ -25,10 +51,13 @@ export default function Footer() {
                 <Link href={`mailto:${branding.email}`} className="block hover:text-primary hover:underline">
                   {branding.email}
                 </Link>
-                <Link href={`tel:${branding.phone.replace(/\s/g, "")}`} className="block hover:text-primary hover:underline">
-                  {branding.phone}
-                </Link>
+                {hasPhone() && (
+                  <Link href={`tel:${branding.phone.replace(/\s/g, "")}`} className="block hover:text-primary hover:underline">
+                    {branding.phone}
+                  </Link>
+                )}
               </div>
+              <LegalDetails />
             </FooterColumn>
           </div>
 
@@ -68,11 +97,13 @@ export default function Footer() {
                     {branding.email}
                   </Link>
                 </li>
-                <li>
-                  <Link href={`tel:${branding.phone.replace(/\s/g, "")}`} className="hover:text-primary hover:underline">
-                    {branding.phone}
-                  </Link>
-                </li>
+                {hasPhone() && (
+                  <li>
+                    <Link href={`tel:${branding.phone.replace(/\s/g, "")}`} className="hover:text-primary hover:underline">
+                      {branding.phone}
+                    </Link>
+                  </li>
+                )}
               </ul>
               <div className="mt-6">
                 <Button href="/contact" className="h-10 px-4">

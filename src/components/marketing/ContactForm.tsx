@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { cn } from "@/lib/cn";
+import { branding } from "@/lib/branding";
 
 type InquiryType =
   | "si"
@@ -113,13 +114,14 @@ export default function ContactForm() {
   if (submitted) {
     return (
       <div className="rounded-lg border border-gray-200 bg-white p-6">
-        <p className="text-base text-gray-900">Your inquiry has been received.</p>
+        <p className="text-base font-medium text-gray-900">Your inquiry has been received.</p>
+        <p className="mt-2 text-sm text-gray-600">{branding.responseTime}</p>
       </div>
     );
   }
 
   return (
-    <form onSubmit={handleSubmit} className="rounded-lg border border-gray-200 bg-white p-6" noValidate>
+    <form onSubmit={handleSubmit} className="relative rounded-lg border border-gray-200 bg-white p-6" noValidate>
       <div className="absolute -left-[9999px]" aria-hidden="true">
         <label htmlFor="website">Website</label>
         <input
@@ -200,12 +202,14 @@ export default function ContactForm() {
 
         {submitError && <p className="text-sm text-error">{submitError}</p>}
 
+        <p className="text-xs text-gray-500">{branding.responseTime}</p>
+
         <button
           type="submit"
           disabled={loading}
           className="h-11 w-full rounded-lg bg-primary text-sm font-medium text-white transition-colors duration-200 hover:bg-primary-hover disabled:opacity-50"
         >
-          {loading ? "Loading..." : "Send Inquiry"}
+          {loading ? "Sending..." : "Send Inquiry"}
         </button>
       </div>
     </form>

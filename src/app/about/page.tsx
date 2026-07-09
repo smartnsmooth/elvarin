@@ -1,10 +1,13 @@
 import SiteShell from "@/components/SiteShell";
 import AboutPageContent from "@/components/pages/AboutPageContent";
+import { createPageMetadata } from "@/lib/metadata";
 
-export const metadata = {
+export const metadata = createPageMetadata({
   title: "About",
-  description: "Elvarin is an IT services company specializing in system integration, system management, software solutions, SaaS products, and IT consulting.",
-};
+  description:
+    "Learn about Elvarin Ltd — our mission, delivery teams, and structured approach to enterprise system integration, software solutions, and IT consulting.",
+  path: "/about",
+});
 
 export default function AboutPage() {
   return (

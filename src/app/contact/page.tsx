@@ -1,10 +1,13 @@
 import SiteShell from "@/components/SiteShell";
 import ContactPageContent from "@/components/pages/ContactPageContent";
+import { createPageMetadata } from "@/lib/metadata";
 
-export const metadata = {
+export const metadata = createPageMetadata({
   title: "Contact",
-  description: "Contact Elvarin for business inquiries, project proposals, and questions about enterprise IT services.",
-};
+  description:
+    "Contact Elvarin Ltd for business inquiries, project proposals, and questions about enterprise IT services. We reply within one business day.",
+  path: "/contact",
+});
 
 export default function ContactPage() {
   return (

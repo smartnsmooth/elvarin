@@ -2,7 +2,7 @@ import Link from "next/link";
 import { BannerHero } from "@/components/marketing/SplitHero";
 import ContactForm from "@/components/marketing/ContactForm";
 import MarketingImage from "@/components/marketing/MarketingImage";
-import { branding } from "@/lib/branding";
+import { branding, hasPhone, hasRegisteredAddress } from "@/lib/branding";
 import { visuals } from "@/lib/visuals";
 
 export default function ContactPageContent() {
@@ -20,18 +20,30 @@ export default function ContactPageContent() {
             <div>
               <h2 className="text-lg font-semibold text-gray-900">Company</h2>
               <p className="mt-2 text-sm text-gray-700">{branding.company}</p>
+              {branding.companiesHouseNumber && (
+                <p className="mt-1 text-sm text-gray-500">Company No. {branding.companiesHouseNumber}</p>
+              )}
+              {hasRegisteredAddress() && (
+                <p className="mt-1 text-sm text-gray-500">{branding.registeredAddress}</p>
+              )}
             </div>
             <div>
               <h2 className="text-lg font-semibold text-gray-900">Email</h2>
               <Link href={`mailto:${branding.email}`} className="mt-2 block text-sm text-primary hover:underline">{branding.email}</Link>
             </div>
-            <div>
-              <h2 className="text-lg font-semibold text-gray-900">Phone</h2>
-              <Link href={`tel:${branding.phone.replace(/\s/g, "")}`} className="mt-2 block text-sm text-primary hover:underline">{branding.phone}</Link>
-            </div>
+            {hasPhone() && (
+              <div>
+                <h2 className="text-lg font-semibold text-gray-900">Phone</h2>
+                <Link href={`tel:${branding.phone.replace(/\s/g, "")}`} className="mt-2 block text-sm text-primary hover:underline">{branding.phone}</Link>
+              </div>
+            )}
             <div>
               <h2 className="text-lg font-semibold text-gray-900">Office Hours</h2>
               <p className="mt-2 text-sm text-gray-700">{branding.supportHours}</p>
+            </div>
+            <div>
+              <h2 className="text-lg font-semibold text-gray-900">Response Time</h2>
+              <p className="mt-2 text-sm text-gray-700">{branding.responseTime}</p>
             </div>
           </aside>
           <div className="lg:col-span-4">
