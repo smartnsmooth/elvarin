@@ -31,12 +31,8 @@ export default function TermsPage() {
           <h2 className="text-xl font-semibold text-gray-900">Website Content</h2>
           <p>
             Content on this website is provided for informational purposes only. Project descriptions, case studies,
-            and service information represent our capabilities and typical engagement scope. They do not constitute
+            and service information describe work we have delivered and our capabilities. They do not constitute
             binding offers, warranties, or commitments unless confirmed through a formal written agreement.
-          </p>
-          <p>
-            Where project examples are marked as illustrative, they describe representative engagement types and are not
-            references to specific client work unless explicitly stated.
           </p>
 
           <h2 className="text-xl font-semibold text-gray-900">Acceptable Use</h2>

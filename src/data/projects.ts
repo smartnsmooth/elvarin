@@ -1,8 +1,5 @@
 export type ProjectCategory = "si" | "sm" | "solutions" | "saas" | "consulting";
 
-export const projectsDisclaimer =
-  "Illustrative example of typical engagement scope. These case studies describe representative work Elvarin is structured to deliver and are not references to specific client engagements unless explicitly stated.";
-
 export type Project = {
   slug: string;
   title: string;
@@ -10,7 +7,6 @@ export type Project = {
   industrySlug: string;
   serviceType: string;
   category: ProjectCategory;
-  illustrative: boolean;
   shortDescription: string;
   overview: string;
   businessContext: string;
@@ -40,7 +36,6 @@ export const projects: Project[] = [
     industrySlug: "manufacturing",
     serviceType: "System Integration",
     category: "si",
-    illustrative: true,
     shortDescription:
       "Enterprise resource planning system for production scheduling, inventory tracking, and workflow management.",
     businessContext:
@@ -85,7 +80,6 @@ export const projects: Project[] = [
     industrySlug: "finance-banking",
     serviceType: "System Integration",
     category: "si",
-    illustrative: true,
     shortDescription:
       "Consolidated reporting platform for financial data collection, validation, and management reporting.",
     businessContext:
@@ -129,7 +123,6 @@ export const projects: Project[] = [
     industrySlug: "healthcare",
     serviceType: "Software Solutions",
     category: "solutions",
-    illustrative: true,
     shortDescription:
       "Patient registration, appointment scheduling, and clinical record management for a healthcare provider.",
     businessContext:
@@ -173,7 +166,6 @@ export const projects: Project[] = [
     industrySlug: "public-sector",
     serviceType: "SaaS",
     category: "saas",
-    illustrative: true,
     shortDescription:
       "Cloud-based learning platform for course delivery, student enrollment, and academic administration.",
     businessContext:
@@ -217,7 +209,6 @@ export const projects: Project[] = [
     industrySlug: "retail",
     serviceType: "System Integration",
     category: "si",
-    illustrative: true,
     shortDescription:
       "Inventory tracking and multi-location stock management for a retail operation.",
     businessContext:
@@ -260,7 +251,6 @@ export const projects: Project[] = [
     industrySlug: "manufacturing",
     serviceType: "System Management",
     category: "sm",
-    illustrative: true,
     shortDescription:
       "Ongoing operation and enhancement of a shipment tracking and warehouse coordination platform.",
     businessContext:

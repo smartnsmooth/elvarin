@@ -2,7 +2,6 @@ import Link from "next/link";
 import MarketingImage from "@/components/marketing/MarketingImage";
 import Breadcrumbs from "@/components/ui/Breadcrumbs";
 import type { Project } from "@/data/projects";
-import { projectsDisclaimer } from "@/data/projects";
 import { projectImage } from "@/lib/visuals";
 import { getProjectLayoutConfig, type ProjectSection } from "./projectLayoutConfig";
 
@@ -80,23 +79,11 @@ export default function ProjectDetailLayout({ project }: { project: Project }) {
         <div className="absolute inset-0 bg-gradient-to-t from-primary-dark/90 via-primary-dark/40 to-transparent" />
         <div className="relative mx-auto flex min-h-[50vh] max-w-7xl flex-col justify-end px-4 pb-12 pt-24">
           <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Projects", href: "/projects" }, { label: project.title }]} className="text-blue-200" />
-          {project.illustrative && (
-            <span className="mt-4 inline-block rounded-full bg-white/15 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-white ring-1 ring-white/30">
-              Representative Project
-            </span>
-          )}
           <h1 className="mt-4 text-3xl font-bold text-white md:text-4xl">{project.title}</h1>
           <p className="mt-3 max-w-2xl text-blue-100">{project.shortDescription}</p>
         </div>
       </section>
       <section className="section-spacing">
-        {project.illustrative && (
-          <div className="mx-auto mb-10 max-w-7xl px-4">
-            <p className="rounded-lg border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-900">
-              {projectsDisclaimer}
-            </p>
-          </div>
-        )}
         <div className={`mx-auto grid max-w-7xl gap-10 px-4 ${config.sidebarFirst ? "lg:grid-cols-[280px_1fr]" : "lg:grid-cols-[1fr_280px]"}`}>
           {config.sidebarFirst ? sidebar : null}
           <div className="space-y-12">{ordered}</div>
