@@ -1,6 +1,7 @@
 import Link from "next/link";
 import SplitHero from "@/components/marketing/SplitHero";
 import MarketingImage from "@/components/marketing/MarketingImage";
+import { RepresentativeProjectBadge } from "@/components/projects/ProjectFilter";
 import { SectionHeader } from "@/components/marketing/SplitSection";
 import { branding } from "@/lib/branding";
 import { capabilities } from "@/data/company";
@@ -77,10 +78,16 @@ export default function HomePage() {
               >
                 <div className="relative aspect-[4/3]">
                   <MarketingImage src={projectImage(project.slug)} alt={project.title} fill sizes="(max-width:768px) 50vw, 25vw" />
+                  {project.illustrative && (
+                    <div className="absolute left-2 top-2">
+                      <RepresentativeProjectBadge />
+                    </div>
+                  )}
                 </div>
                 <div className="p-4">
                   <p className="text-xs font-medium uppercase tracking-wide text-gray-500">{project.industry}</p>
                   <h3 className="mt-1 font-semibold text-gray-900 group-hover:text-primary">{project.title}</h3>
+                  <p className="mt-2 text-xs text-gray-500">Illustrative example engagement</p>
                 </div>
               </Link>
             ))}

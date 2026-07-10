@@ -1,15 +1,31 @@
 import { siteImage } from "./site-image";
 
+/** Stable interim production URL until a custom domain is connected. */
+export const DEFAULT_PRODUCTION_URL = "https://elvarin.vercel.app";
+
 function getSiteUrl(): string {
   const configured = process.env.NEXT_PUBLIC_SITE_URL?.trim();
-  if (configured) {
+
+  if (configured && !configured.includes("localhost")) {
     return configured.replace(/\/$/, "");
   }
-  const vercelUrl = process.env.VERCEL_URL?.trim();
-  if (vercelUrl) {
-    return `https://${vercelUrl}`;
+
+  const productionDomain = process.env.VERCEL_PROJECT_PRODUCTION_URL?.trim();
+  if (productionDomain) {
+    const normalized = productionDomain.replace(/\/$/, "");
+    return normalized.startsWith("http") ? normalized : `https://${normalized}`;
   }
-  return "http://localhost:3000";
+
+  if (process.env.VERCEL_ENV === "production") {
+    return DEFAULT_PRODUCTION_URL;
+  }
+
+  const deploymentUrl = process.env.VERCEL_URL?.trim();
+  if (deploymentUrl) {
+    return `https://${deploymentUrl}`;
+  }
+
+  return configured?.replace(/\/$/, "") || "http://localhost:3000";
 }
 
 export const branding = {
@@ -35,4 +51,8 @@ export function hasPhone(): boolean {
 
 export function hasRegisteredAddress(): boolean {
   return branding.registeredAddress.length > 0;
+}
+
+export function hasCompaniesHouseNumber(): boolean {
+  return branding.companiesHouseNumber.length > 0;
 }

@@ -68,7 +68,7 @@ export const companyQuote = {
 export const companyRegistration = {
   title: "Company Registration",
   description:
-    "Elvarin Ltd is a company registered in England and Wales. Registration details are shown on this website once confirmed for publication.",
+    "Elvarin Ltd is a company registered in England and Wales. Official registration details are listed below.",
 } as const;
 
 export const founderBio = {

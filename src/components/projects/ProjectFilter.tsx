@@ -6,6 +6,19 @@ import { cn } from "@/lib/cn";
 import { projectCategories, type ProjectCategory } from "@/data/projects";
 import { projectImage } from "@/lib/visuals";
 
+export function RepresentativeProjectBadge({ className }: { className?: string }) {
+  return (
+    <span
+      className={cn(
+        "inline-block rounded-full bg-amber-100 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-amber-900 ring-1 ring-amber-200",
+        className,
+      )}
+    >
+      Representative Project
+    </span>
+  );
+}
+
 export default function ProjectFilter({
   active,
   onChange,
@@ -46,6 +59,7 @@ export function FilteredProjectGrid({
     serviceType: string;
     shortDescription: string;
     category: ProjectCategory;
+    illustrative?: boolean;
   }>;
   active: ProjectCategory | "all";
 }) {
@@ -61,6 +75,11 @@ export function FilteredProjectGrid({
         >
           <div className="relative aspect-[16/10]">
             <MarketingImage src={projectImage(project.slug)} alt={project.title} fill sizes="(max-width:768px) 100vw, 33vw" />
+            {project.illustrative !== false && (
+              <div className="absolute left-3 top-3">
+                <RepresentativeProjectBadge />
+              </div>
+            )}
           </div>
           <div className="flex flex-col p-5">
             <div className="mb-3 flex flex-wrap gap-2">
@@ -69,7 +88,7 @@ export function FilteredProjectGrid({
             </div>
             <h3 className="text-lg font-semibold text-gray-900 group-hover:text-primary">{project.title}</h3>
             <p className="mt-2 line-clamp-2 flex-1 text-sm text-gray-700">{project.shortDescription}</p>
-            <span className="mt-4 text-sm font-medium text-primary">View Case Study →</span>
+            <span className="mt-4 text-sm font-medium text-primary">View Example Engagement →</span>
           </div>
         </Link>
       ))}

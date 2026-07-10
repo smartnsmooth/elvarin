@@ -1,11 +1,13 @@
 import Link from "next/link";
 import SiteShell from "@/components/SiteShell";
 import { branding } from "@/lib/branding";
+import { createPageMetadata } from "@/lib/metadata";
 
-export const metadata = {
+export const metadata = createPageMetadata({
   title: "Careers",
-  description: "Careers at Elvarin.",
-};
+  description: `Career opportunities at ${branding.company}. Join our enterprise IT services and delivery teams.`,
+  path: "/careers",
+});
 
 export default function CareersPage() {
   return (

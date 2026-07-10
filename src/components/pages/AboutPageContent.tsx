@@ -1,7 +1,7 @@
 import Link from "next/link";
 import MarketingImage from "@/components/marketing/MarketingImage";
 import { companyIntro, companyMilestones, companyQuote, companyRegistration, founderBio, organizationalTeams } from "@/data/company";
-import { branding, hasRegisteredAddress } from "@/lib/branding";
+import { branding, hasCompaniesHouseNumber, hasRegisteredAddress } from "@/lib/branding";
 import { visuals } from "@/lib/visuals";
 
 export default function AboutPageContent() {
@@ -92,7 +92,7 @@ export default function AboutPageContent() {
               <dt className="font-medium text-gray-900">Legal entity</dt>
               <dd>{branding.company}</dd>
             </div>
-            {branding.companiesHouseNumber && (
+            {hasCompaniesHouseNumber() && (
               <div>
                 <dt className="font-medium text-gray-900">Companies House number</dt>
                 <dd>{branding.companiesHouseNumber}</dd>

@@ -37,12 +37,31 @@ Runs at [http://localhost:3000](http://localhost:3000).
 
 ## Production checklist
 
-Before launch, set in Vercel:
+Before launch, set in Vercel **Production** environment variables (not Preview):
 
-1. `NEXT_PUBLIC_SITE_URL` to your live domain
-2. Real Companies House number, registered address, and VAT (if applicable)
-3. `RESEND_API_KEY` + verified sender for contact form delivery
-4. Remove or set a real `NEXT_PUBLIC_SUPPORT_PHONE`
+1. `NEXT_PUBLIC_SITE_URL=https://elvarin.vercel.app` (or your custom domain)
+2. `NEXT_PUBLIC_COMPANIES_HOUSE_NUMBER` — actual Companies House number
+3. `NEXT_PUBLIC_REGISTERED_ADDRESS` — registered office address
+4. `NEXT_PUBLIC_VAT_NUMBER` — if VAT-registered
+5. `RESEND_API_KEY` + verified `CONTACT_FROM_EMAIL` for contact form delivery
+6. Leave `NEXT_PUBLIC_SUPPORT_PHONE` empty unless you have a real business number
+
+**Important:** Do not set `NEXT_PUBLIC_SITE_URL=http://localhost:3000` in Vercel — that causes the `og:url` localhost bug on every page including the homepage and privacy policy. The site uses one shared layout, footer, and metadata helper across all routes; there is no separate homepage template.
+
+## Implemented production features (developer confirmation)
+
+| Feature | Location | Status |
+|---------|----------|--------|
+| `robots.txt` | `src/app/robots.ts` | Allows all public pages; references sitemap |
+| `sitemap.xml` | `src/app/sitemap.ts` | All static + dynamic routes (32 pages) |
+| JSON-LD Organization schema | `src/components/OrganizationJsonLd.tsx` | In root layout |
+| Security headers (CSP, X-Frame-Options, etc.) | `next.config.ts` | Applied site-wide |
+| Contact form honeypot | `src/components/marketing/ContactForm.tsx` | Hidden `website` field |
+| Rate limiting (5 req/min/IP) | `src/app/api/contact/route.ts` | Returns 429 when exceeded |
+| Server-side validation/sanitization | `src/app/api/contact/route.ts` | Trim, max length, email format |
+| Cookie notice | `src/components/CookieBanner.tsx` | Essential-only default; consent for Plausible |
+| Custom 404 page | `src/app/not-found.tsx` | Branded |
+| Stable production `og:url` | `src/lib/branding.ts` | Uses `NEXT_PUBLIC_SITE_URL`, then `VERCEL_PROJECT_PRODUCTION_URL`, then `https://elvarin.vercel.app` on production — not preview deploy URLs |
 
 ## Related projects
 
