@@ -5,7 +5,7 @@ import { createPageMetadata } from "@/lib/metadata";
 export const metadata = createPageMetadata({
   title: "Projects",
   description:
-    "Enterprise system integration, software development, and SaaS projects delivered by Elvarin across manufacturing, finance, healthcare, education, retail, and logistics.",
+    "Enterprise system integration, software development, and SaaS projects delivered by VinextAI across manufacturing, finance, healthcare, education, retail, and logistics.",
   path: "/projects",
 });
 

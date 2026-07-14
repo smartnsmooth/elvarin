@@ -5,7 +5,7 @@ import { createPageMetadata } from "@/lib/metadata";
 export const metadata = createPageMetadata({
   title: "Industries",
   description:
-    "Industries served by Elvarin including manufacturing, finance, healthcare, public sector, retail, and telecommunications.",
+    "Industries served by VinextAI including manufacturing, finance, healthcare, public sector, retail, and telecommunications.",
   path: "/industries",
 });
 

@@ -1,4 +1,4 @@
-﻿import fs from "fs";
+import fs from "fs";
 import path from "path";
 
 const root = process.cwd();
@@ -24,7 +24,7 @@ if (!company.includes("companyMilestones")) {
 
 export const companyQuote = {
   text: "We structure every engagement around operational analysis, defined scope, and measurable delivery outcomes.",
-  attribution: "Elvarin Delivery Leadership",
+  attribution: "VinextAI Delivery Leadership",
 } as const;
 
 export const deliveryProcess = [`
@@ -145,7 +145,7 @@ export default function AboutPageContent() {
   return (
     <>
       <section className="relative min-h-[70vh] overflow-hidden">
-        <MarketingImage src={visuals.about.hero} alt="About Elvarin" fill priority sizes="100vw" className="brightness-[0.55]" />
+        <MarketingImage src={visuals.about.hero} alt="About VinextAI" fill priority sizes="100vw" className="brightness-[0.55]" />
         <div className="absolute inset-0 bg-gradient-to-t from-primary-dark/90 via-primary-dark/40 to-transparent" />
         <div className="relative mx-auto flex min-h-[70vh] max-w-7xl flex-col justify-end px-4 pb-16 pt-32">
           <p className="text-sm font-semibold uppercase tracking-widest text-accent">About the Company</p>

@@ -25,6 +25,7 @@ export default function HomePage() {
         subtitle={branding.description}
         platformLabel="IT Services Portfolio"
         image={visuals.hero.home}
+        coverImage
         ctas={[
           { label: "Our Services", href: "/services" },
           { label: "View Projects", href: "/projects", variant: "outline" },

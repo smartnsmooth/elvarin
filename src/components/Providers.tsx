@@ -14,14 +14,14 @@ export default function Providers({ children }: { children: React.ReactNode }) {
       return;
     }
 
-    const stored = localStorage.getItem("elvarin-cookie-notice");
+    const stored = localStorage.getItem("vinextai-cookie-notice");
     if (stored === "all") {
       setAnalyticsAllowed(true);
     }
 
     const onConsent = () => setAnalyticsAllowed(true);
-    window.addEventListener("elvarin:analytics-consent", onConsent);
-    return () => window.removeEventListener("elvarin:analytics-consent", onConsent);
+    window.addEventListener("vinextai:analytics-consent", onConsent);
+    return () => window.removeEventListener("vinextai:analytics-consent", onConsent);
   }, []);
 
   return (

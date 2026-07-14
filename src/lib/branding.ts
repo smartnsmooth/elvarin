@@ -4,10 +4,10 @@ import { siteImage } from "./site-image";
  * Stable public site URL used for og:url, canonical, sitemap, and JSON-LD.
  * Never use VERCEL_URL here — that is a per-deploy preview hostname and changes every deploy.
  */
-export const DEFAULT_PRODUCTION_URL = "https://elvarin.vercel.app";
+export const DEFAULT_PRODUCTION_URL = "https://vinextai.vercel.app";
 
 /** Canonical public support email — keep in sync with Vercel NEXT_PUBLIC_SUPPORT_EMAIL. */
-export const DEFAULT_SUPPORT_EMAIL = "support@elvarin.com";
+export const DEFAULT_SUPPORT_EMAIL = "support@vinextai.com";
 
 function getSiteUrl(): string {
   const configured = process.env.NEXT_PUBLIC_SITE_URL?.trim().replace(/\/$/, "");
@@ -35,12 +35,12 @@ function getSiteUrl(): string {
 }
 
 export const branding = {
-  name: process.env.NEXT_PUBLIC_BRAND_NAME || "Elvarin",
+  name: process.env.NEXT_PUBLIC_BRAND_NAME || "VinextAI",
   tagline: "Enterprise IT Services for Business Systems",
   description:
     "IT services company specializing in system integration, system management, software solutions, SaaS products, and IT consulting.",
-  logo: siteImage("images/logo.png", "Elvarin company logo"),
-  company: process.env.NEXT_PUBLIC_COMPANY_NAME || "Elvarin Ltd",
+  logo: siteImage("images/logo.png", "VinextAI company logo"),
+  company: process.env.NEXT_PUBLIC_COMPANY_NAME || "VinextAI Ltd",
   companiesHouseNumber: process.env.NEXT_PUBLIC_COMPANIES_HOUSE_NUMBER?.trim() || "",
   registeredAddress: process.env.NEXT_PUBLIC_REGISTERED_ADDRESS?.trim() || "",
   vatNumber: process.env.NEXT_PUBLIC_VAT_NUMBER?.trim() || "",

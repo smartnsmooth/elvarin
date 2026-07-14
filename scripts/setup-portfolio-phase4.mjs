@@ -1,4 +1,4 @@
-﻿import fs from "fs";
+import fs from "fs";
 import path from "path";
 
 const root = process.cwd();
@@ -26,7 +26,7 @@ import AboutPageContent from "@/components/pages/AboutPageContent";
 
 export const metadata = {
   title: "About",
-  description: "Elvarin is an IT services company specializing in system integration, system management, software solutions, SaaS products, and IT consulting.",
+  description: "VinextAI is an IT services company specializing in system integration, system management, software solutions, SaaS products, and IT consulting.",
 };
 
 export default function AboutPage() {
@@ -60,7 +60,7 @@ import IndustriesShowcase from "@/components/pages/IndustriesShowcase";
 
 export const metadata = {
   title: "Industries",
-  description: "Industries served by Elvarin including finance, public sector, manufacturing, telecommunications, retail, and healthcare.",
+  description: "Industries served by VinextAI including finance, public sector, manufacturing, telecommunications, retail, and healthcare.",
 };
 
 export default function IndustriesPage() {
@@ -94,7 +94,7 @@ import ContactPageContent from "@/components/pages/ContactPageContent";
 
 export const metadata = {
   title: "Contact",
-  description: "Contact Elvarin for business inquiries, project proposals, and questions about enterprise IT services.",
+  description: "Contact VinextAI for business inquiries, project proposals, and questions about enterprise IT services.",
 };
 
 export default function ContactPage() {
@@ -208,7 +208,7 @@ import { branding } from "@/lib/branding";
 
 export const metadata = {
   title: "Careers",
-  description: "Careers at Elvarin.",
+  description: "Careers at VinextAI.",
 };
 
 export default function CareersPage() {

@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 
-const STORAGE_KEY = "elvarin-cookie-notice";
+const STORAGE_KEY = "vinextai-cookie-notice";
 
 function hasAnalytics(): boolean {
   return Boolean(process.env.NEXT_PUBLIC_PLAUSIBLE_DOMAIN);
@@ -28,7 +28,7 @@ export default function CookieBanner() {
     localStorage.setItem(STORAGE_KEY, choice);
     setVisible(false);
     if (analyticsEnabled && choice === "all") {
-      window.dispatchEvent(new Event("elvarin:analytics-consent"));
+      window.dispatchEvent(new Event("vinextai:analytics-consent"));
     }
   };
 

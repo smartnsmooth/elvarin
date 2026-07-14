@@ -15,6 +15,7 @@ export default function SplitHero({
   fullHeight = true,
   dark = true,
   platformLabel,
+  coverImage = false,
 }: {
   title: string;
   subtitle: string;
@@ -25,10 +26,12 @@ export default function SplitHero({
   fullHeight?: boolean;
   dark?: boolean;
   platformLabel?: string;
+  /** Full-bleed image behind content; hidden on mobile (gradient only). */
+  coverImage?: boolean;
 }) {
   const alt = resolveImageAlt(image, imageAlt);
-  const textBlock = (
-    <div className={`flex w-full flex-col justify-center px-6 py-12 lg:px-12 lg:py-0 ${dark ? "text-white" : "text-gray-900"}`}>
+  const textBlock = (padClassName = `pl-12 py-12 lg:py-0 xl:pl-24`) => (
+    <div className={`flex w-full flex-col justify-center ${padClassName} ${dark ? "text-white" : "text-gray-900"}`}>
       <p className={`mb-3 text-sm font-semibold uppercase tracking-widest ${dark ? "text-accent" : "text-primary"}`}>
         {platformLabel ?? "Enterprise Platform"}
       </p>
@@ -58,6 +61,26 @@ export default function SplitHero({
     </div>
   );
 
+  if (coverImage) {
+    return (
+      <section
+        className={`relative overflow-hidden ${fullHeight ? "min-h-[75vh] lg:min-h-[85vh]" : "min-h-[50vh]"} ${dark ? "hero-gradient" : "bg-white"
+          }`}
+      >
+        <div className="absolute inset-0 hidden lg:block">
+          <MarketingImage src={image} alt={alt} fill priority sizes="100vw" className="object-cover" />
+          <div className="absolute inset-0 bg-gradient-to-r from-primary-dark/90 via-primary/65 to-primary/25" />
+        </div>
+        <div className="pattern-grid absolute inset-0 opacity-30" />
+        <div className="relative flex min-h-[inherit] w-full items-center">
+          <div className="flex w-full max-w-xl lg:max-w-2xl">
+            {textBlock()}
+          </div>
+        </div>
+      </section>
+    );
+  }
+
   const imageBlock = (
     <div className="relative min-h-[280px] lg:min-h-[400px] lg:flex-1 lg:self-stretch">
       <MarketingImage src={image} alt={alt} fill priority sizes="(max-width:1024px) 100vw, 55vw" />
@@ -67,20 +90,19 @@ export default function SplitHero({
 
   return (
     <section
-      className={`relative overflow-hidden ${fullHeight ? "min-h-[75vh] lg:min-h-[85vh]" : ""} ${
-        dark ? "hero-gradient" : "bg-white"
-      }`}
+      className={`relative overflow-hidden ${fullHeight ? "min-h-[75vh] lg:min-h-[85vh]" : ""} ${dark ? "hero-gradient" : "bg-white"
+        }`}
     >
       <div className="pattern-grid absolute inset-0 opacity-30" />
       <div className="relative mx-auto flex min-h-[inherit] max-w-7xl flex-col lg:flex-row lg:items-center">
         {imagePosition === "left" ? (
           <>
             {imageBlock}
-            <div className="flex lg:w-[45%] lg:shrink-0 lg:items-center">{textBlock}</div>
+            <div className="flex lg:w-[45%] lg:shrink-0 lg:items-center">{textBlock()}</div>
           </>
         ) : (
           <>
-            <div className="flex lg:w-[45%] lg:shrink-0 lg:items-center">{textBlock}</div>
+            <div className="flex lg:w-[45%] lg:shrink-0 lg:items-center">{textBlock()}</div>
             {imageBlock}
           </>
         )}

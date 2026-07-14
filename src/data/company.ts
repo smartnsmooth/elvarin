@@ -1,7 +1,7 @@
 export const companyIntro = {
   title: "About the Company",
   paragraphs: [
-    "Elvarin is an IT services company specializing in system integration, system management, software solutions, SaaS products, and IT consulting for enterprise business clients.",
+    "VinextAI is an IT services company specializing in system integration, system management, software solutions, SaaS products, and IT consulting for enterprise business clients.",
     "We structure delivery around engineering teams, delivery teams, maintenance teams, and consulting teams. Each engagement begins with operational analysis before system design and implementation.",
   ],
 };
@@ -62,19 +62,19 @@ export const companyMilestones = [
 
 export const companyQuote = {
   text: "We structure every engagement around operational analysis, defined scope, and measurable delivery outcomes.",
-  attribution: "Elvarin Delivery Leadership",
+  attribution: "VinextAI Delivery Leadership",
 } as const;
 
 export const companyRegistration = {
   title: "Company Registration",
   description:
-    "Elvarin Ltd is a company registered in England and Wales. Companies House number, registered office, and VAT details appear below when published.",
+    "VinextAI Ltd is a company registered in England and Wales. Companies House number, registered office, and VAT details appear below when published.",
 } as const;
 
 export const founderBio = {
   name: "Leadership Team",
   role: "Founding & Delivery Leadership",
-  bio: "Elvarin is led by practitioners with experience in enterprise system integration, software delivery, and IT consulting for regulated and operationally complex environments. Our leadership team works directly with clients on scope definition, architecture, and delivery governance.",
+  bio: "VinextAI is led by practitioners with experience in enterprise system integration, software delivery, and IT consulting for regulated and operationally complex environments. Our leadership team works directly with clients on scope definition, architecture, and delivery governance.",
 } as const;
 
 export const deliveryProcess = [
