@@ -94,7 +94,7 @@ export default function AboutPageContent() {
             </div>
             {hasCompaniesHouseNumber() && (
               <div>
-                <dt className="font-medium text-gray-900">Companies House number</dt>
+                <dt className="font-medium text-gray-900">Registration number</dt>
                 <dd>{branding.companiesHouseNumber}</dd>
               </div>
             )}

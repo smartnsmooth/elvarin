@@ -65,8 +65,9 @@ export default function TermsPage() {
 
           <h2 className="text-xl font-semibold text-gray-900">Governing Law</h2>
           <p>
-            These terms are governed by the laws of England and Wales. The courts of England and Wales shall have
-            exclusive jurisdiction, subject to mandatory consumer protection laws where applicable.
+            These terms are governed by the laws of the United States and the State of Delaware, without regard to
+            conflict of law principles. The courts of Delaware shall have exclusive jurisdiction, subject to mandatory
+            consumer protection laws where applicable.
           </p>
 
           <h2 className="text-xl font-semibold text-gray-900">Changes</h2>

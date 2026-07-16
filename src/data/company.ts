@@ -68,7 +68,7 @@ export const companyQuote = {
 export const companyRegistration = {
   title: "Company Registration",
   description:
-    "VinextAI Ltd is a company registered in England and Wales. Companies House number, registered office, and VAT details appear below when published.",
+    "Vinext AI, LLC is a limited liability company. Registration details, registered address, and tax identifiers appear below when published.",
 } as const;
 
 export const founderBio = {

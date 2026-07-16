@@ -1,6 +1,6 @@
 # VinextAI — Company Portfolio
 
-Static company website for VinextAI Ltd. Marketing pages only — no database, auth, or e-commerce.
+Static company website for VinextAI (legal entity: Vinext AI, LLC). Marketing pages only — no database, auth, or e-commerce.
 
 ## Pages
 
@@ -23,8 +23,8 @@ Runs at [http://localhost:3000](http://localhost:3000).
 | Variable | Description |
 |----------|-------------|
 | `NEXT_PUBLIC_SITE_URL` | Production site URL (required in Vercel for correct OG/canonical URLs) |
-| `NEXT_PUBLIC_COMPANY_NAME` | Legal entity name (default `VinextAI Ltd`) |
-| `NEXT_PUBLIC_COMPANIES_HOUSE_NUMBER` | Companies House registration number |
+| `NEXT_PUBLIC_COMPANY_NAME` | Legal entity name (default `Vinext AI, LLC`) |
+| `NEXT_PUBLIC_COMPANIES_HOUSE_NUMBER` | Business registration number (optional) |
 | `NEXT_PUBLIC_REGISTERED_ADDRESS` | Registered office address |
 | `NEXT_PUBLIC_VAT_NUMBER` | VAT number (if registered) |
 | `NEXT_PUBLIC_BRAND_NAME` | Brand name (default `VinextAI`) |
@@ -41,23 +41,23 @@ Set these in Vercel for **both Production and Preview** (same values):
 
 1. `NEXT_PUBLIC_SITE_URL=https://vinextai.vercel.app` (or custom domain when live)
 2. `NEXT_PUBLIC_SUPPORT_EMAIL=support@vinextai.com` — **one address only**; do not leave Preview on `.com` and Production on `.org`
-3. `NEXT_PUBLIC_COMPANIES_HOUSE_NUMBER` — actual Companies House number
-4. `NEXT_PUBLIC_REGISTERED_ADDRESS` — registered office address
-5. `NEXT_PUBLIC_VAT_NUMBER` — if VAT-registered
+3. `NEXT_PUBLIC_COMPANIES_HOUSE_NUMBER` — business registration number (optional)
+4. `NEXT_PUBLIC_REGISTERED_ADDRESS` — registered address
+5. `NEXT_PUBLIC_VAT_NUMBER` — tax identifier if applicable
 6. `RESEND_API_KEY` + verified `CONTACT_FROM_EMAIL` for contact form delivery
 7. Leave `NEXT_PUBLIC_SUPPORT_PHONE` empty unless you have a real business number
 
 **Important:**
 - Do **not** set `NEXT_PUBLIC_SITE_URL=http://localhost:3000` in Vercel.
 - Do **not** rely on preview deployment hostnames for `og:url` — the code now always uses the stable public URL on Vercel.
-- Homepage and Privacy use the **same** `SiteShell` / `Footer` / `createPageMetadata` as every other page. If a review still shows "VinextAI LLC" or localhost on those routes, the reviewer is looking at a **stale or preview URL**, not current production.
+- Homepage and Privacy use the **same** `SiteShell` / `Footer` / `createPageMetadata` as every other page. If a review still shows a stale entity name or localhost on those routes, the reviewer is looking at a **stale or preview URL**, not current production.
 
 ### Verified on production (`https://vinextai.vercel.app`) as of latest deploy
 
 | Check | Result |
 |-------|--------|
 | Homepage entity / phone / Representative Project labels | Fixed |
-| Privacy UK GDPR content + VinextAI Ltd | Fixed |
+| Privacy content + Vinext AI, LLC | Fixed |
 | `og:url` on `/`, `/privacy`, `/about`, `/contact`, project pages | All `https://vinextai.vercel.app/...` |
 | Support email | Driven by `NEXT_PUBLIC_SUPPORT_EMAIL` (align Vercel to `.com`) |
 

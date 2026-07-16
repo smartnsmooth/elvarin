@@ -7,7 +7,7 @@ const LAST_UPDATED = "10 July 2026";
 
 export const metadata = createPageMetadata({
   title: "Privacy Policy",
-  description: `Privacy policy for ${branding.company}. How we collect, use, and protect personal data under UK GDPR.`,
+  description: `Privacy policy for ${branding.company}. How we collect, use, and protect personal data.`,
   path: "/privacy",
 });
 
@@ -25,14 +25,14 @@ export default function PrivacyPage() {
           <p>
             {branding.company} (&ldquo;we&rdquo;, &ldquo;us&rdquo;) respects your privacy. This policy explains how we
             collect and use personal data when you visit our website or submit an inquiry. We process personal data in
-            accordance with the UK General Data Protection Regulation (UK GDPR) and the Data Protection Act 2018.
+            accordance with applicable U.S. privacy laws.
           </p>
 
           <h2 className="text-xl font-semibold text-gray-900">Data Controller</h2>
           <p>
             The data controller is {branding.company}.
-            {hasRegisteredAddress() && <> Registered office: {branding.registeredAddress}.</>}
-            {branding.companiesHouseNumber && <> Company No. {branding.companiesHouseNumber}.</>}
+            {hasRegisteredAddress() && <> Registered address: {branding.registeredAddress}.</>}
+            {branding.companiesHouseNumber && <> Registration No. {branding.companiesHouseNumber}.</>}
           </p>
 
           <h2 className="text-xl font-semibold text-gray-900">Information We Collect</h2>
@@ -86,8 +86,8 @@ export default function PrivacyPage() {
             <li>Privacy-friendly analytics (Plausible Analytics, if enabled and consented to)</li>
           </ul>
           <p>
-            Where data is transferred outside the UK, we rely on appropriate safeguards such as Standard Contractual
-            Clauses or UK adequacy regulations.
+            Where data is transferred across jurisdictions, we rely on appropriate contractual and technical safeguards
+            with our processors.
           </p>
 
           <h2 className="text-xl font-semibold text-gray-900">Cookies</h2>
@@ -97,7 +97,7 @@ export default function PrivacyPage() {
           </p>
 
           <h2 className="text-xl font-semibold text-gray-900">Your Rights</h2>
-          <p>Under UK GDPR, you have the right to:</p>
+          <p>Depending on your location, you may have the right to:</p>
           <ul className="list-disc space-y-1 pl-6">
             <li>Access the personal data we hold about you</li>
             <li>Request correction of inaccurate data</li>
@@ -105,7 +105,7 @@ export default function PrivacyPage() {
             <li>Object to or restrict processing</li>
             <li>Data portability, where applicable</li>
             <li>Withdraw consent at any time, where processing is based on consent</li>
-            <li>Lodge a complaint with the Information Commissioner&apos;s Office (ICO) at ico.org.uk</li>
+            <li>Lodge a complaint with a relevant data protection authority</li>
           </ul>
 
           <h2 className="text-xl font-semibold text-gray-900">Contact</h2>

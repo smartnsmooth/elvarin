@@ -25,14 +25,14 @@ export default function OrganizationJsonLd() {
     schema.address = {
       "@type": "PostalAddress",
       streetAddress: branding.registeredAddress,
-      addressCountry: "GB",
+      addressCountry: "US",
     };
   }
 
   if (branding.companiesHouseNumber) {
     schema.identifier = {
       "@type": "PropertyValue",
-      name: "Companies House Registration Number",
+      name: "Business Registration Number",
       value: branding.companiesHouseNumber,
     };
   }
