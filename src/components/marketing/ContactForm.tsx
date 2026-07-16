@@ -209,7 +209,7 @@ export default function ContactForm() {
           disabled={loading}
           className="h-11 w-full rounded-lg bg-primary text-sm font-medium text-white transition-colors duration-200 hover:bg-primary-hover disabled:opacity-50"
         >
-          {loading ? "Sending..." : "Send Inquiry"}
+          {loading ? "Submitting..." : "Send Inquiry"}
         </button>
       </div>
     </form>

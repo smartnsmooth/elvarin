@@ -37,10 +37,6 @@ export default function OrganizationJsonLd() {
     };
   }
 
-  if (branding.vatNumber) {
-    schema.vatID = branding.vatNumber;
-  }
-
   return (
     <script
       type="application/ld+json"

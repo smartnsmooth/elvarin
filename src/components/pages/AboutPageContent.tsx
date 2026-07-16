@@ -104,12 +104,6 @@ export default function AboutPageContent() {
                 <dd>{branding.registeredAddress}</dd>
               </div>
             )}
-            {branding.vatNumber && (
-              <div>
-                <dt className="font-medium text-gray-900">VAT number</dt>
-                <dd>{branding.vatNumber}</dd>
-              </div>
-            )}
           </dl>
         </div>
       </section>

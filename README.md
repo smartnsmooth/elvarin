@@ -26,13 +26,9 @@ Runs at [http://localhost:3000](http://localhost:3000).
 | `NEXT_PUBLIC_COMPANY_NAME` | Legal entity name (default `Vinext AI, LLC`) |
 | `NEXT_PUBLIC_COMPANIES_HOUSE_NUMBER` | Business registration number (optional) |
 | `NEXT_PUBLIC_REGISTERED_ADDRESS` | Registered office address |
-| `NEXT_PUBLIC_VAT_NUMBER` | VAT number (if registered) |
 | `NEXT_PUBLIC_BRAND_NAME` | Brand name (default `VinextAI`) |
 | `NEXT_PUBLIC_SUPPORT_EMAIL` | Public contact email |
 | `NEXT_PUBLIC_SUPPORT_PHONE` | Public phone (leave empty to hide) |
-| `RESEND_API_KEY` | Resend API key for contact form delivery |
-| `CONTACT_FROM_EMAIL` | Verified sender address in Resend |
-| `CONTACT_EMAIL` | Inbox for form submissions |
 | `NEXT_PUBLIC_PLAUSIBLE_DOMAIN` | Plausible domain (optional analytics) |
 
 ## Production checklist
@@ -43,9 +39,7 @@ Set these in Vercel for **both Production and Preview** (same values):
 2. `NEXT_PUBLIC_SUPPORT_EMAIL=support@vinextai.com` — **one address only**; do not leave Preview on `.com` and Production on `.org`
 3. `NEXT_PUBLIC_COMPANIES_HOUSE_NUMBER` — business registration number (optional)
 4. `NEXT_PUBLIC_REGISTERED_ADDRESS` — registered address
-5. `NEXT_PUBLIC_VAT_NUMBER` — tax identifier if applicable
-6. `RESEND_API_KEY` + verified `CONTACT_FROM_EMAIL` for contact form delivery
-7. Leave `NEXT_PUBLIC_SUPPORT_PHONE` empty unless you have a real business number
+5. Leave `NEXT_PUBLIC_SUPPORT_PHONE` empty unless you have a real business number
 
 **Important:**
 - Do **not** set `NEXT_PUBLIC_SITE_URL=http://localhost:3000` in Vercel.

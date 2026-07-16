@@ -28,18 +28,3 @@ export default function SectionContainer({
     </section>
   );
 }
-
-type SectionHeaderProps = {
-  title: string;
-  subtitle?: string;
-  className?: string;
-};
-
-export function SectionHeader({ title, subtitle, className }: SectionHeaderProps) {
-  return (
-    <div className={cn("mb-12 max-w-[720px]", className)}>
-      <h2 className="text-gray-900">{title}</h2>
-      {subtitle && <p className="mt-4 text-base leading-[26px] text-gray-700">{subtitle}</p>}
-    </div>
-  );
-}

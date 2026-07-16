@@ -26,9 +26,3 @@ export function resolveImageAlt(image: SiteImage | string, override?: string): s
   if (override) return override;
   return typeof image === "string" ? "" : image.alt;
 }
-
-export function productImageAlt(productName: string, imagePath: string): string {
-  const normalized = imagePath.startsWith("/") ? imagePath : `/${imagePath}`;
-  const file = normalized.replace(/^\/+/, "");
-  return `${productName} product image - public/${file}`;
-}

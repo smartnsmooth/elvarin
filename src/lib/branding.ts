@@ -43,7 +43,6 @@ export const branding = {
   company: process.env.NEXT_PUBLIC_COMPANY_NAME || "Vinext AI, LLC",
   companiesHouseNumber: process.env.NEXT_PUBLIC_COMPANIES_HOUSE_NUMBER?.trim() || "",
   registeredAddress: process.env.NEXT_PUBLIC_REGISTERED_ADDRESS?.trim() || "",
-  vatNumber: process.env.NEXT_PUBLIC_VAT_NUMBER?.trim() || "",
   email: process.env.NEXT_PUBLIC_SUPPORT_EMAIL?.trim() || DEFAULT_SUPPORT_EMAIL,
   phone: process.env.NEXT_PUBLIC_SUPPORT_PHONE?.trim() || "",
   supportHours: "Monday – Friday, 9:00 AM – 6:00 PM (ET)",

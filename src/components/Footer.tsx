@@ -19,9 +19,6 @@ function LegalDetails() {
   if (branding.companiesHouseNumber) {
     items.push(`Company No. ${branding.companiesHouseNumber}`);
   }
-  if (branding.vatNumber) {
-    items.push(`VAT ${branding.vatNumber}`);
-  }
   if (hasRegisteredAddress()) {
     items.push(branding.registeredAddress);
   }
